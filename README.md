@@ -1,8 +1,4 @@
-# ContextWeaver: Advanced RAG System
-
-ContextWeaver is a Retrieval-Augmented Generation (RAG) system designed to provide accurate, grounded responses by combining state-of-the-art embedding models with large language models.
-
-## 📁 Project Structure
+## Project Structure
 
 ```text
 .
@@ -20,7 +16,7 @@ ContextWeaver is a Retrieval-Augmented Generation (RAG) system designed to provi
 └── embedding_comparison.ipynb # Research notebook for embedding model evaluation
 ```
 
-## 🚀 Main Components
+##  Main Components
 
 ### 1. Backend (FastAPI)
 The backend serves as the orchestration layer, handling requests from the frontend and coordinating between the vector database and the LLM.
@@ -32,24 +28,21 @@ The backend serves as the orchestration layer, handling requests from the fronte
 ### 2. Core Logic (`backend/core`)
 - **`database.py`**: Utilizes **Qdrant** for vector storage. It manages collection creation and handles "upsert" operations for document embeddings.
 - **`models.py`**: Configures the **BAAI/bge-small-en-v1.5** embedding model via `sentence-transformers`. It includes specific prompting logic to optimize retrieval accuracy.
-- **`rag.py`**: Implements the RAG workflow. It retrieves relevant document context from Qdrant and constructs a grounded prompt for the **Google Gemini** model (Gemini 2.5 Flash / 1.5 Flash).
+- **`rag.py`**: Implements the RAG workflow. It retrieves relevant document context from Qdrant and constructs a grounded prompt for the **Google Gemini** model (using Gemini 2.5 Flash Preview).
 
-### 3. Frontend
-A modern, responsive single-page application built with a premium **Teal theme**. It features:
-- Interactive chat interface for RAG queries.
-- File upload functionality for knowledge base expansion.
-- Real-time feedback submission (Like/Dislike).
-- Glassmorphism design elements and smooth animations.
 
 ### 4. Embedding Comparison Notebook
 A Jupyter notebook used during the development phase to evaluate different embedding models (`LaBSE`, `all-MiniLM-L6-v2`, `BGE`, etc.) against a custom evaluation dataset to ensure the best retrieval performance.
 
-## 🛠️ Setup & Installation
+## Setup & Installation
 
 1. **Backend**:
    ```bash
+   pip install uv 
+   uv venv 
+   source .venv/bin/activate       
    cd backend
-   pip install -r requirements.txt
+   uv pip install -r requirements.txt
    # Add your GEMINI_API_KEY to .env
    python main.py
    ```
@@ -57,10 +50,10 @@ A Jupyter notebook used during the development phase to evaluate different embed
 2. **Frontend**:
    Simply open `frontend/index.html` in a browser or serve it using a local live server.
 
-## 🧠 Technologies Used
+## Technologies Used
 - **Language**: Python (Backend), Javascript/HTML/CSS (Frontend)
 - **Framework**: FastAPI
 - **Vector DB**: Qdrant
 - **Embeddings**: BGE (HuggingFace)
 - **LLM**: Google Gemini
-- **UI**: Vanilla CSS (Custom Design System)
+- **UI**: CSS

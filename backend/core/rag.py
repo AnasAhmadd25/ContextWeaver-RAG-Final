@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-# Use an environment variable for Gemini API Key
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
 if GEMINI_API_KEY:
@@ -28,10 +27,9 @@ def generate_response(query: str):
     
     Response:
     """
-    
-    # Check if Gemini key is available, else return mock
+
     if not GEMINI_API_KEY:
-        return f"[MOCK RESPONSE - No Gemini API Key] Based on context about {query}, here is a summary from the retrieved documents: {context_text[:200]}..."
+        return f"Insert the gemini api key in the .env file"
 
     try:
         # User requested specific model version
